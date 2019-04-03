@@ -1,0 +1,17 @@
+{
+  "name": "ai-flabby",
+  "version": "0.0.1",
+  "description": "Neural network learning to play Flabby Pird",
+  "main": "server.js",
+  "repository": "https://github.com/jkulak/ai-flabby",
+  "author": "Jakub Kułak <jakub.kulak@gmail.com>",
+  "license": "MIT",
+  "private": false,
+
+  "devDependencies": {
+    "express": "^4.16.4"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}

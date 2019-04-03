@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Game</title>
-    <script src="/game.js" async></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css"
@@ -17,7 +16,18 @@
   </head>
 
   <body>
-    <h1>Flabby Pird</h1>
-    <div id="game"></div>
+    <h1>Sneezy Pug</h1>
+    <p>Press
+      <ul>
+        <li>`space` to jump</li>
+        <li>`p` to pause</li>
+      </ul></p>
+    <div id="game">
+      <canvas id="canvas" height="400" width="300"></canvas>
+    </div>
+    <div id="paused">Paused</div>
   </body>
+  <script src="/pug.js"></script>
+  <script src="/input.js"></script>
+  <script src="/game.js"></script>
 </html>

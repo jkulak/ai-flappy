@@ -11,6 +11,10 @@ class InputHandler {
         case 80:
           pause();
           break;
+
+        case 13:
+          restart();
+          break;
       }
     });
   }

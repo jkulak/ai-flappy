@@ -1,22 +1,20 @@
 class Pipe {
-  constructor(gameWidth, gameHeight, panSpeed) {
+  constructor(gameWidth, gameHeight, panSpeed, offset) {
     this.width = 60;
-    this.height = Math.random() * (gameHeight - 200) + 100;
+    this.height = Math.random() * (gameHeight - 300) + 50;
 
     this.gameHeight = gameHeight;
     this.gameWidth = gameWidth;
 
     this.panSpeed = panSpeed;
 
-    this.position = {
-      x: gameWidth,
-      y: gameHeight - this.height
-    };
+    this.x = gameWidth + offset;
+    this.y = gameHeight - this.height;
   }
 
   draw(ctx) {
     ctx.fillStyle = "green";
-    ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+    ctx.fillRect(this.x, this.y, this.width, this.height);
   }
 
   constrain(n, low, high) {
@@ -24,10 +22,24 @@ class Pipe {
   }
 
   update() {
-    this.position.x -= this.panSpeed;
+    this.x -= this.panSpeed;
+
+    // went out of the screen
+    if (this.x + this.width < 0) {
+      this.reset();
+    }
   }
 
-  jump() {
-    this.velY = -this.jumpHeight;
+  colided(p) {
+    if (p.x + p.width > this.x && p.y + p.height >= this.y && p.x < this.x + this.width) {
+      return true;
+    }
+    return false;
+  }
+
+  reset() {
+    this.height = Math.random() * (this.gameHeight - 200) + 100;
+    this.x = this.gameWidth;
+    this.y = this.gameHeight - this.height;
   }
 }

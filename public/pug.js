@@ -9,13 +9,12 @@ class Pug {
 
     this.dead = false;
 
-    this.velX = 0;
-    this.velY = 0;
+    this.velocity = 0;
 
-    this.jumpHeight = 15;
+    this.jumpHeight = 11;
 
     this.position = {
-      x: gameWidth / 10,
+      x: gameWidth / 4,
       y: gameHeight / 2 - this.height / 2
     };
   }
@@ -30,22 +29,24 @@ class Pug {
   }
 
   update() {
-    this.velY = this.constrain(this.velY, -25, 1000);
-    this.velY += this.gravity;
-    this.position.y += this.velY;
+    this.velocity = this.constrain(this.velocity, -25, 1000);
+    this.velocity += this.gravity;
+    this.position.y += this.velocity;
 
     // bounce back
-    if (this.position.y > this.gameHeight) {
-      this.velY = -25;
+    if (this.position.y + this.height > this.gameHeight) {
+      // this.velocity = -25;
+      this.position.y = this.gameHeight - this.height;
     }
 
     // hit ceiling
-    if (this.position.y < 0) {
+    if (this.position.y <= 0) {
       this.position.y = 0;
+      // this.velocity = 0;
     }
   }
 
   jump() {
-    this.velY = -this.jumpHeight;
+    this.velocity = -this.jumpHeight;
   }
 }

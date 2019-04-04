@@ -4,12 +4,14 @@ let ctx = canvas.getContext("2d");
 const GAME_WIDTH = 300;
 const GAME_HEIGHT = 400;
 const GRAVITY = 1;
+const PAN_SPEED = 2;
 let playing = true;
 
 const inputHandler = new InputHandler();
 const pug = new Pug(GAME_WIDTH, GAME_HEIGHT, GRAVITY);
+const pipe = new Pipe(GAME_WIDTH, GAME_HEIGHT, PAN_SPEED);
 
-pug.draw(ctx);
+// pug.draw(ctx);
 
 function clear(ctx) {
   ctx.clearRect(0, 0, 300, 400);
@@ -27,6 +29,9 @@ function gameLoop() {
     clear(ctx);
     pug.update();
     pug.draw(ctx);
+
+    pipe.update();
+    pipe.draw(ctx);
   }
   requestAnimationFrame(gameLoop);
 }

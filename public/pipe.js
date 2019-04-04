@@ -3,6 +3,8 @@ class Pipe {
     this.width = 60;
     this.height = Math.random() * (gameHeight - 300) + 50;
 
+    this.image = document.getElementById("img-wall");
+
     this.gameHeight = gameHeight;
     this.gameWidth = gameWidth;
 
@@ -13,8 +15,7 @@ class Pipe {
   }
 
   draw(ctx) {
-    ctx.fillStyle = "green";
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
   }
 
   constrain(n, low, high) {
@@ -31,7 +32,11 @@ class Pipe {
   }
 
   colided(p) {
-    if (p.x + p.width > this.x && p.y + p.height >= this.y && p.x < this.x + this.width) {
+    if (
+      p.x + p.width / 2 > this.x &&
+      p.y + p.height / 2 >= this.y &&
+      p.x < this.x + this.width / 2
+    ) {
       return true;
     }
     return false;

@@ -3,6 +3,8 @@ class Pug {
     this.width = 30;
     this.height = 30;
 
+    this.image = document.getElementById("img-brain");
+
     this.gameHeight = gameHeight;
     this.gravity = gravity;
 
@@ -14,8 +16,7 @@ class Pug {
   }
 
   draw(ctx) {
-    ctx.fillStyle = "salmon";
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
   }
 
   constrain(n, low, high) {

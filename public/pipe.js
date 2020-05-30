@@ -11,21 +11,17 @@ class Pipe {
     this.panSpeed = panSpeed;
 
     this.x = gameWidth + offset;
-    this.y = gameHeight - this.height;
+    this.y = this.height;
   }
 
   draw(ctx) {
     ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
   }
 
-  constrain(n, low, high) {
-    return Math.max(Math.min(n, high), low);
-  }
-
   update() {
     this.x -= this.panSpeed;
 
-    // went out of the screen
+    // went out off the screen
     if (this.x + this.width < 0) {
       this.reset();
     }

@@ -23,8 +23,6 @@ function restart() {
   init();
 }
 
-// pug.draw(ctx);
-
 function clear(ctx) {
   ctx.clearRect(0, 0, 300, 400);
 }
@@ -44,8 +42,6 @@ function gameLoop() {
   // console.log(playing);
   if (playing) {
     clear(ctx);
-    pug.update();
-    pug.draw(ctx);
 
     pipes.forEach(pipe => {
       pipe.update();
@@ -54,6 +50,9 @@ function gameLoop() {
         die();
       }
     });
+
+    pug.update();
+    pug.draw(ctx);
   }
   requestAnimationFrame(gameLoop);
 }
